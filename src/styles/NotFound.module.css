@@ -1,0 +1,122 @@
+.container {
+  @apply min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-xl p-8 w-full max-w-2xl mx-auto;
+  @apply border border-gray-100;
+  backdrop-filter: blur(10px);
+}
+
+.header {
+  @apply text-center mb-8;
+}
+
+.title {
+  @apply text-4xl font-bold text-gray-800 mb-2;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  @apply text-gray-600 text-lg;
+}
+
+.baseUrlInfo {
+  @apply bg-gray-50 rounded-lg p-4 mb-6;
+  @apply border border-gray-100;
+}
+
+.code {
+  @apply font-mono bg-white px-2 py-1 rounded text-sm text-blue-600;
+  @apply border border-gray-200;
+}
+
+.currentPath {
+  @apply text-red-500 font-semibold;
+}
+
+.suggestionsContainer {
+  @apply mt-8;
+}
+
+.suggestionsTitle {
+  @apply text-lg font-semibold text-gray-700 mb-4;
+}
+
+.suggestionCard {
+  @apply w-full flex items-center justify-between p-4 rounded-lg mb-3;
+  @apply bg-white border border-gray-200 hover:border-blue-300;
+  @apply transition-all duration-200 ease-in-out;
+  @apply hover:shadow-md;
+}
+
+.suggestionInfo {
+  @apply flex flex-col items-start;
+}
+
+.suggestionName {
+  @apply font-semibold text-gray-800;
+}
+
+.suggestionPath {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+.icon {
+  @apply w-5 h-5 text-gray-400;
+  @apply transition-transform duration-200;
+}
+
+.suggestionCard:hover .icon {
+  @apply text-blue-500 transform translate-x-1;
+}
+
+.backButtonContainer {
+  @apply mt-8 text-center;
+}
+
+.backButton {
+  @apply inline-flex items-center px-6 py-3 rounded-full;
+  @apply bg-gradient-to-r from-blue-600 to-blue-500;
+  @apply text-white font-medium;
+  @apply transition-all duration-200 ease-in-out;
+  @apply hover:shadow-lg hover:from-blue-700 hover:to-blue-600;
+}
+
+.backButtonIcon {
+  @apply w-5 h-5 mr-2;
+  @apply transition-transform duration-200;
+}
+
+.backButton:hover .backButtonIcon {
+  @apply transform -translate-x-1;
+}
+
+@media (max-width: 640px) {
+  .card {
+    @apply p-6;
+  }
+
+  .title {
+    @apply text-3xl;
+  }
+
+  .subtitle {
+    @apply text-base;
+  }
+
+  .suggestionCard {
+    @apply p-3;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

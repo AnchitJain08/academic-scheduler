@@ -47,7 +47,7 @@ const Schedule: React.FC = () => {
   };
 
   // Get event background color
-  const getEventBackgroundColor = (event: any) => {
+  const getEventBackgroundColor = (event: any | undefined) => {
     if (!event) return '#F3F4F6';
     
     if (event.type === 'holiday') {
@@ -69,7 +69,7 @@ const Schedule: React.FC = () => {
   };
 
   // Get event text color
-  const getEventTextColor = (event: any) => {
+  const getEventTextColor = (event: any | undefined) => {
     if (!event) return '#111827';
     
     if (event.type === 'holiday') {
@@ -104,14 +104,11 @@ const Schedule: React.FC = () => {
 
   // Get slots for a specific day
   const getSlotsForDay = (day: string) => {
-    const dayIndex = ['SUN', ...days, 'SAT'].indexOf(day);
-    if (dayIndex === -1) return Array(timetable.timeSlots.length).fill('');
-    
-    const date = weekDates[dayIndex];
+    const date = weekDates[days.indexOf(day)];
     const event = getAcademicEvent(date);
     
     if (shouldCancelClasses(event)) {
-      return Array(timetable.timeSlots.length).fill('EVENT:' + event.title);
+      return Array(timetable.timeSlots.length).fill(`EVENT:${event?.title || 'No Classes'}`);
     }
     
     if (day === 'SUN' || day === 'SAT') {
@@ -185,7 +182,7 @@ const Schedule: React.FC = () => {
                             color: getEventTextColor(event)
                           }}
                         >
-                          {event.title}
+                          {event?.title}
                         </p>
                         <p 
                           className="text-xs"
@@ -193,7 +190,7 @@ const Schedule: React.FC = () => {
                             color: getEventTextColor(event)
                           }}
                         >
-                          No classes due to {event.type}
+                          No classes due to {event?.type}
                         </p>
                       </div>
                     );
@@ -342,7 +339,7 @@ const Schedule: React.FC = () => {
                   color: getEventTextColor(event)
                 }}
               >
-                {event.title}
+                {event?.title}
               </p>
               <p 
                 className="text-sm"
@@ -350,7 +347,7 @@ const Schedule: React.FC = () => {
                   color: getEventTextColor(event)
                 }}
               >
-                No classes today due to {event.type}
+                No classes today due to {event?.type}
               </p>
             </div>
           ) : selectedDay === 'SUN' || selectedDay === 'SAT' ? (

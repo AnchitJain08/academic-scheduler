@@ -1,6 +1,6 @@
-# Academic Scheduler
+# AcadFlow
 
-A comprehensive academic management application built with React and TypeScript, designed to help students manage their academic schedule efficiently.
+A comprehensive academic management system built with React and TypeScript, designed to help students manage their academic schedule efficiently.
 
 ## Features
 
@@ -41,12 +41,12 @@ A comprehensive academic management application built with React and TypeScript,
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/academic-scheduler.git
+   git clone https://github.com/yourusername/acadflow.git
    ```
 
 2. Install dependencies:
    ```bash
-   cd academic-scheduler
+   cd acadflow
    npm install
    ```
 
@@ -79,4 +79,4 @@ src/
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-# academic-scheduler
+# AcadFlow
