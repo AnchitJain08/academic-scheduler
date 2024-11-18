@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://anchitjain08.github.io/academic-scheduler/sitemap.xml
