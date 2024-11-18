@@ -16,6 +16,7 @@ import {
 } from 'date-fns';
 import { academicEvents } from '../data/academicData';
 import type { AcademicEvent } from '../types';
+import GradualSpacing from '../components/magicui/gradual-spacing';
 
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date(2024, 10)); // November 2024
@@ -144,67 +145,72 @@ const Calendar: React.FC = () => {
 
       {/* Events list */}
       <div className="space-y-2">
-        {currentMonthEvents.map((event) => {
+        {currentMonthEvents.map((event, index) => {
           const isPastEvent = event.endDate 
             ? parseISO(event.endDate) < new Date() 
             : parseISO(event.startDate) < new Date();
             
           return (
-          <div
-            key={event.id}
-            className={`flex bg-white overflow-hidden rounded-xl border transition-all duration-200 group
-              ${isPastEvent ? 'border-gray-100 opacity-60' : 'border-gray-200'}`}
-            style={{
-              boxShadow: isPastEvent ? 'none' : '2px 4px 16px rgba(17, 17, 26, 0.08)',
-            }}
-          >
-            {/* Colored strip */}
-            <div 
-              className="w-3 rounded-l-xl flex-shrink-0"
-              style={{ 
-                backgroundColor: 
-                  event.type === 'holiday' 
-                    ? event.title.toLowerCase().includes('semester break')
-                      ? '#0D9488' // darker teal
-                      : event.title.toLowerCase().includes('break')
-                        ? '#4F46E5' // darker indigo
-                        : '#DC2626' // darker red
-                    : event.type === 'exam'
-                      ? '#7E22CE' // darker purple
-                      : event.type === 'deadline'
-                        ? '#CA8A04' // darker yellow
-                        : '#2563EB', // darker blue (default)
-                opacity: isPastEvent ? 0.5 : 1
-              }}
-            />
-            
-            {/* Event content */}
-            <div className="flex-1 p-3">
-              <div className="flex justify-between items-start">
-                <div className="flex-1 pr-4">
-                  <h3 className={`font-medium text-sm text-left ${isPastEvent ? 'text-gray-500' : ''}`}>
-                    {formatEventTitle(event.title)}
-                  </h3>
-                  {event.description && (
-                    <p className={`text-sm mt-1 text-left line-clamp-2 ${isPastEvent ? 'text-gray-400' : 'text-gray-600'}`}>
-                      {event.description}
-                    </p>
-                  )}
-                </div>
-                <div className="flex flex-col items-end text-xs whitespace-nowrap">
-                  {event.endDate && event.endDate !== event.startDate ? (
-                    <div className="text-black">
-                      {format(parseISO(event.startDate), 'd')}-{format(parseISO(event.endDate), 'd')}
+            <GradualSpacing
+              key={event.id}
+              delay={index * 0.05}
+              duration={0.3}
+            >
+              <div
+                className={`flex bg-white overflow-hidden rounded-xl border transition-all duration-200 group
+                  ${isPastEvent ? 'border-gray-100 opacity-60' : 'border-gray-200'}`}
+                style={{
+                  boxShadow: isPastEvent ? 'none' : '2px 4px 16px rgba(17, 17, 26, 0.08)',
+                }}
+              >
+                {/* Colored strip */}
+                <div 
+                  className="w-3 rounded-l-xl flex-shrink-0"
+                  style={{ 
+                    backgroundColor: 
+                      event.type === 'holiday' 
+                        ? event.title.toLowerCase().includes('semester break')
+                          ? '#0D9488' // darker teal
+                          : event.title.toLowerCase().includes('break')
+                            ? '#4F46E5' // darker indigo
+                            : '#DC2626' // darker red
+                        : event.type === 'exam'
+                          ? '#7E22CE' // darker purple
+                          : event.type === 'deadline'
+                            ? '#CA8A04' // darker yellow
+                            : '#2563EB', // darker blue (default)
+                    opacity: isPastEvent ? 0.5 : 1
+                  }}
+                />
+                
+                {/* Event content */}
+                <div className="flex-1 p-3">
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1 pr-4">
+                      <h3 className={`font-medium text-sm text-left ${isPastEvent ? 'text-gray-500' : ''}`}>
+                        {formatEventTitle(event.title)}
+                      </h3>
+                      {event.description && (
+                        <p className={`text-sm mt-1 text-left line-clamp-2 ${isPastEvent ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {event.description}
+                        </p>
+                      )}
                     </div>
-                  ) : (
-                    <div className="text-black">
-                      {format(parseISO(event.startDate), 'd')}
+                    <div className="flex flex-col items-end text-xs whitespace-nowrap">
+                      {event.endDate && event.endDate !== event.startDate ? (
+                        <div className="text-black">
+                          {format(parseISO(event.startDate), 'd')}-{format(parseISO(event.endDate), 'd')}
+                        </div>
+                      ) : (
+                        <div className="text-black">
+                          {format(parseISO(event.startDate), 'd')}
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </GradualSpacing>
           );
         })}
       </div>
@@ -351,7 +357,7 @@ const Calendar: React.FC = () => {
   );
 
   return (
-    <div className="pb-2">
+    <div className="p-4 lg:px-36">
       <MobileView />
       <DesktopView />
     </div>
