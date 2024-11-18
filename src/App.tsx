@@ -13,9 +13,10 @@ import './styles/landing.css';
 
 function App() {
   const { auth } = useStore();
+  const BASE_URL = '/academic-scheduler';
 
   return (
-    <Router>
+    <Router basename={BASE_URL}>
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Landing />} />
@@ -32,6 +33,10 @@ function App() {
           <Route path="courses" element={<Courses />} />
           <Route path="profile" element={<Profile />} />
         </Route>
+
+        {/* Redirect legacy URLs to home */}
+        <Route path="/academic-scheduler" element={<Navigate to="/" replace />} />
+        <Route path="/academic-scheduler/*" element={<Navigate to="/" replace />} />
 
         {/* 404 Route */}
         <Route path="*" element={<NotFound />} />
