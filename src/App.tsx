@@ -9,8 +9,11 @@ import './App.css';
 import './styles/landing.css';
 
 function App() {
+  // Get the base URL from Vite's environment
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
-    <Router>
+    <Router basename={baseUrl}>
       <Routes>
         {/* Landing page route */}
         <Route path="/" element={<Landing />} />
