@@ -4,10 +4,6 @@ import { motion } from 'framer-motion';
 
 const Landing: React.FC = () => {
   const navigate = useNavigate();
-  
-  const handleNavigation = () => {
-    navigate('/schedule', { relative: 'path' });
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FBFBFD] to-[#F5F5F7]">
@@ -17,7 +13,7 @@ const Landing: React.FC = () => {
           <span className="text-base font-semibold text-[#1d1d1f]">AcadFlow</span>
           <div className="flex items-center gap-4">
             <motion.button
-              onClick={handleNavigation}
+              onClick={() => navigate('/schedule')}
               className="px-4 py-1.5 rounded-full text-sm font-medium text-blue-800 bg-blue-50 border border-blue-800 hover:bg-blue-100 active:bg-blue-50 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -44,7 +40,7 @@ const Landing: React.FC = () => {
               Manage your academic schedule, track assignments, and stay organized with our intuitive platform.
             </p>
             <motion.button
-              onClick={handleNavigation}
+              onClick={() => navigate('/schedule')}
               className="mt-8 px-6 py-3 text-base font-medium text-white bg-[#06c] rounded-full hover:bg-blue-700 active:bg-blue-800 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

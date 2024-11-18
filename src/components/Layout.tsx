@@ -30,9 +30,9 @@ const Layout: React.FC = () => {
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2">
         <div className="grid grid-cols-4 gap-1">
           <Link
-            to="/app/schedule"
+            to="/schedule"
             className={`flex flex-col items-center justify-center px-2 py-1 text-xs ${
-              isActive('/app/schedule') ? 'text-blue-600' : 'text-gray-600'
+              isActive('/schedule') ? 'text-blue-600' : 'text-gray-600'
             } hover:text-blue-600 transition-colors`}
           >
             <Clock className="w-6 h-6" />
@@ -40,9 +40,9 @@ const Layout: React.FC = () => {
           </Link>
 
           <Link
-            to="/app/calendar"
+            to="/calendar"
             className={`flex flex-col items-center justify-center px-2 py-1 text-xs ${
-              isActive('/app/calendar') ? 'text-blue-600' : 'text-gray-600'
+              isActive('/calendar') ? 'text-blue-600' : 'text-gray-600'
             } hover:text-blue-600 transition-colors`}
           >
             <Calendar className="w-6 h-6" />
@@ -50,9 +50,9 @@ const Layout: React.FC = () => {
           </Link>
 
           <Link
-            to="/app/courses"
+            to="/courses"
             className={`flex flex-col items-center justify-center px-2 py-1 text-xs ${
-              isActive('/app/courses') ? 'text-blue-600' : 'text-gray-600'
+              isActive('/courses') ? 'text-blue-600' : 'text-gray-600'
             } hover:text-blue-600 transition-colors`}
           >
             <BookOpen className="w-6 h-6" />
@@ -60,9 +60,9 @@ const Layout: React.FC = () => {
           </Link>
 
           <Link
-            to="/app/profile"
+            to="/profile"
             className={`flex flex-col items-center justify-center px-2 py-1 text-xs ${
-              isActive('/app/profile') ? 'text-blue-600' : 'text-gray-600'
+              isActive('/profile') ? 'text-blue-600' : 'text-gray-600'
             } hover:text-blue-600 transition-colors`}
           >
             <User className="w-6 h-6" />
