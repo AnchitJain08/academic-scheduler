@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Layout from './components/Layout';
 import Calendar from './pages/Calendar';
@@ -10,7 +10,7 @@ import './styles/landing.css';
 
 function App() {
   return (
-    <Router basename="/academic-scheduler">
+    <Router>
       <Routes>
         {/* Landing page route */}
         <Route path="/" element={<Landing />} />
