@@ -13,7 +13,7 @@ const Landing: React.FC = () => {
           <span className="text-base font-semibold text-[#1d1d1f]">AcadFlow</span>
           <div className="flex items-center gap-4">
             <motion.button
-              onClick={() => navigate('/schedule/schedule')}
+              onClick={() => navigate('/schedule')}
               className="px-4 py-1.5 rounded-full text-sm font-medium text-blue-800 bg-blue-50 border border-blue-800 hover:bg-blue-100 active:bg-blue-50 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -40,7 +40,7 @@ const Landing: React.FC = () => {
               Manage your academic schedule, track assignments, and stay organized with our intuitive platform.
             </p>
             <motion.button
-              onClick={() => navigate('/schedule/schedule')}
+              onClick={() => navigate('/schedule')}
               className="mt-8 px-6 py-3 text-base font-medium text-white bg-[#06c] rounded-full hover:bg-blue-700 active:bg-blue-800 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -103,7 +103,7 @@ const Landing: React.FC = () => {
                 },
                 {
                   title: 'Progress Tracking',
-                  description: 'Monitor your academic progress and stay on top of your educational goals.',
+                  description: 'Monitor your academic progress and stay on top of your goals with detailed insights.',
                   icon: (props: any) => (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,9 +115,9 @@ const Landing: React.FC = () => {
                       strokeLinejoin="round"
                       {...props}
                     >
-                      <line x1="12" y1="20" x2="12" y2="10" />
-                      <line x1="18" y1="20" x2="18" y2="4" />
-                      <line x1="6" y1="20" x2="6" y2="16" />
+                      <line x1="18" y1="20" x2="18" y2="10" />
+                      <line x1="12" y1="20" x2="12" y2="4" />
+                      <line x1="6" y1="20" x2="6" y2="14" />
                     </svg>
                   ),
                 },
@@ -126,12 +126,12 @@ const Landing: React.FC = () => {
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="p-6 bg-white rounded-2xl shadow-[2px_4px_16px_rgba(17,17,26,0.08)] border border-gray-100"
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
                 >
-                  {feature.icon({ className: 'w-8 h-8 text-[#06c]' })}
-                  <h3 className="mt-4 text-lg font-semibold text-[#1d1d1f]">{feature.title}</h3>
-                  <p className="mt-2 text-[#424245]">{feature.description}</p>
+                  <feature.icon className="w-8 h-8 text-blue-600 mb-4" />
+                  <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">{feature.title}</h3>
+                  <p className="text-[#424245]">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
