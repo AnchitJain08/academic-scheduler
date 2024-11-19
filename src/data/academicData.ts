@@ -254,7 +254,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-microprocessors',
-    title: 'Microprocessors And Microcontrollers (2:30 PM - 4:00 PM)',
+    title: 'Microprocessors And Microcontrollers',
     startDate: '2024-12-26T09:00:00.000Z',
     endDate: '2024-12-26T09:00:00.000Z',
     type: 'exam',
@@ -262,7 +262,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-mobile-app',
-    title: 'Mobile Application Development (2:30 PM - 4:00 PM)',
+    title: 'Mobile Application Development',
     startDate: '2024-12-28T09:00:00.000Z',
     endDate: '2024-12-28T09:00:00.000Z',
     type: 'exam',
@@ -270,7 +270,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-computer-arch',
-    title: 'Computer Architecture and Organization (2:30 PM - 4:00 PM)',
+    title: 'Computer Architecture and Organization',
     startDate: '2024-12-31T09:00:00.000Z',
     endDate: '2024-12-31T09:00:00.000Z',
     type: 'exam',
@@ -278,7 +278,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-ethics',
-    title: 'Ethics And Values (2:30 PM - 4:00 PM)',
+    title: 'Ethics And Values',
     startDate: '2025-01-02T09:00:00.000Z',
     endDate: '2025-01-02T09:00:00.000Z',
     type: 'exam',
@@ -286,7 +286,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-software-eng',
-    title: 'Software Engineering (2:30 PM - 4:00 PM)',
+    title: 'Software Engineering',
     startDate: '2025-01-04T09:00:00.000Z',
     endDate: '2025-01-04T09:00:00.000Z',
     type: 'exam',
@@ -294,7 +294,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-theory-comp',
-    title: 'Theory Of Computation And Compiler Design (2:30 PM - 4:00 PM)',
+    title: 'Theory Of Computation And Compiler Design',
     startDate: '2025-01-07T09:00:00.000Z',
     endDate: '2025-01-07T09:00:00.000Z',
     type: 'exam',
@@ -302,7 +302,7 @@ export const academicEvents: AcademicEvent[] = [
   },
   {
     id: 'term-end-exam-algo',
-    title: 'Design and Analysis of Algorithms (2:30 PM - 4:00 PM)',
+    title: 'Design and Analysis of Algorithms',
     startDate: '2025-01-09T09:00:00.000Z',
     endDate: '2025-01-09T09:00:00.000Z',
     type: 'exam',
