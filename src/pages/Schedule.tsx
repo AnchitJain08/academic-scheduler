@@ -3,25 +3,32 @@ import { timetable, findCourseBySlot } from '../data/courseData';
 import { academicEvents } from '../data/academicData';
 import GradualSpacing from '../components/magicui/gradual-spacing';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 const Schedule: React.FC = () => {
   const days = Object.keys(timetable.schedule);
-  const [selectedDay, setSelectedDay] = useState(days[0]);
+  const [selectedDay, setSelectedDay] = useState(() => {
+    const today = new Date();
+    const dayIndex = today.getDay();
+    if (dayIndex === 0) return 'SUN';
+    if (dayIndex === 6) return 'SAT';
+    return days[dayIndex - 1];
+  });
   const [weekOffset, setWeekOffset] = useState(0);
 
   // Calculate dates for the current week
   const weekDates = useMemo(() => {
     const today = new Date();
     const currentDay = today.getDay();
-    const monday = new Date(today);
-    monday.setDate(today.getDate() - currentDay + (currentDay === 0 ? -6 : 1));
+    const sunday = new Date(today);
+    sunday.setDate(today.getDate() - currentDay);
     
     // Apply week offset
-    monday.setDate(monday.getDate() + (weekOffset * 7));
+    sunday.setDate(sunday.getDate() + (weekOffset * 7));
 
     return ['SUN', ...days, 'SAT'].map((_, index) => {
-      const date = new Date(monday);
-      date.setDate(monday.getDate() + index - 1);
+      const date = new Date(sunday);
+      date.setDate(sunday.getDate() + index);
       return date;
     });
   }, [days, weekOffset]);
@@ -104,7 +111,8 @@ const Schedule: React.FC = () => {
 
   // Get slots for a specific day
   const getSlotsForDay = (day: string) => {
-    const date = weekDates[days.indexOf(day)];
+    const dayIndex = ['SUN', ...days, 'SAT'].indexOf(day);
+    const date = weekDates[dayIndex];
     const event = getAcademicEvent(date);
     
     if (shouldCancelClasses(event)) {
@@ -112,7 +120,7 @@ const Schedule: React.FC = () => {
     }
     
     if (day === 'SUN' || day === 'SAT') {
-      return Array(timetable.timeSlots.length).fill('');
+      return Array(timetable.timeSlots.length).fill('WEEKEND');
     }
     
     return timetable.schedule[day] || [];
@@ -233,11 +241,14 @@ const Schedule: React.FC = () => {
   );
 
   // Mobile view component
+  const navigate = useNavigate();
   const MobileSchedule = () => {
     const currentDaySlots = getSlotsForDay(selectedDay);
-    const event = getAcademicEvent(weekDates[['SUN', ...days, 'SAT'].indexOf(selectedDay)]);
+    const dayIndex = ['SUN', ...days, 'SAT'].indexOf(selectedDay);
+    const currentDate = weekDates[dayIndex];
+    const event = getAcademicEvent(currentDate);
     const isEventDay = shouldCancelClasses(event);
-    const currentDate = weekDates[['SUN', ...days, 'SAT'].indexOf(selectedDay)];
+    const isWeekend = currentDaySlots[0] === 'WEEKEND';
     
     return (
       <div className="lg:hidden px-3 pt-3">
@@ -350,10 +361,18 @@ const Schedule: React.FC = () => {
                 No classes today due to {event?.type}
               </p>
             </div>
-          ) : selectedDay === 'SUN' || selectedDay === 'SAT' ? (
-            <div className="py-8 px-4 rounded-xl shadow-sm bg-white text-center">
-              <p className="text-lg font-bold text-gray-800">Weekend</p>
-              <p className="text-sm text-gray-600">No classes scheduled</p>
+          ) : isWeekend ? (
+            <div className="py-8 px-4 rounded-xl shadow-sm bg-gray-50 text-center">
+              <p className="text-lg font-bold text-gray-800 mb-2">Weekend</p>
+              <p className="text-sm text-gray-600">No classes scheduled for {selectedDay === 'SUN' ? 'Sunday' : 'Saturday'}</p>
+              <div className="mt-4 flex justify-center">
+                <button
+                  onClick={handleToday}
+                  className="px-4 py-2 text-sm bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors shadow-sm"
+                >
+                  View Today's Schedule
+                </button>
+              </div>
             </div>
           ) : (
             timetable.timeSlots.map((time, index) => {
@@ -367,10 +386,12 @@ const Schedule: React.FC = () => {
                   duration={0.3}
                 >
                   <div
+                    onClick={() => course && navigate('/courses', { state: { scrollTo: course.code } })}
                     className="py-4 px-2.5 rounded-xl shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
                     style={{
                       backgroundColor: course?.color || 'white',
-                      border: '1px solid rgba(0,0,0,0.1)'
+                      border: '1px solid rgba(0,0,0,0.1)',
+                      cursor: course ? 'pointer' : 'default'
                     }}
                   >
                     <div className="flex justify-between items-center">

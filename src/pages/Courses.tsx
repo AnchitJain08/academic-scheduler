@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { courses } from '../data/courseData';
+import { useLocation } from 'react-router-dom';
 import GradualSpacing from '../components/magicui/gradual-spacing';
 
 const CourseCard = ({ course, index }: { course: any; index: number }) => (
@@ -87,6 +88,21 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => (
 );
 
 const Courses: React.FC = () => {
+  const location = useLocation();
+  const courseRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | null;
+    if (state?.scrollTo) {
+      const element = courseRefs.current[state.scrollTo];
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   return (
     <div className="p-4 lg:px-36">
       {/* Desktop view */}
@@ -98,7 +114,12 @@ const Courses: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {courses.map((course, index) => (
-              <CourseCard key={course.code} course={course} index={index} />
+              <div
+                key={course.code}
+                ref={(el) => courseRefs.current[course.code] = el}
+              >
+                <CourseCard course={course} index={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -108,7 +129,12 @@ const Courses: React.FC = () => {
       <div className="lg:hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {courses.map((course, index) => (
-            <CourseCard key={course.code} course={course} index={index} />
+            <div
+              key={course.code}
+              ref={(el) => courseRefs.current[course.code] = el}
+            >
+              <CourseCard course={course} index={index} />
+            </div>
           ))}
         </div>
       </div>

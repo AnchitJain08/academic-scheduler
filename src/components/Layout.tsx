@@ -11,16 +11,6 @@ const Layout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 px-4 py-2.5">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <BookOpen className="h-6 w-6 text-blue-600" />
-            <span className="ml-2 text-lg font-semibold text-gray-900">AcadFlow</span>
-          </div>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <main className="flex-1 mb-16">
         <Outlet />
