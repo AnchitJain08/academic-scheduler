@@ -33,6 +33,14 @@ const Schedule: React.FC = () => {
     });
   }, [days, weekOffset]);
 
+  // Check if current date is selected
+  const isCurrentDateSelected = useMemo(() => {
+    const today = new Date();
+    const dayIndex = ['SUN', ...days, 'SAT'].indexOf(selectedDay);
+    const selectedDate = weekDates[dayIndex];
+    return format(today, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd');
+  }, [selectedDay, weekDates, days]);
+
   // Check for academic events on a specific date
   const getAcademicEvent = (date: Date) => {
     const dateStr = date.toISOString().split('T')[0];
@@ -266,12 +274,14 @@ const Schedule: React.FC = () => {
             <span className="text-lg font-semibold">
               {format(currentDate, 'MMMM d')}
             </span>
-            <button
-              onClick={handleToday}
-              className="px-3 py-1 text-sm bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-            >
-              Today
-            </button>
+            {!isCurrentDateSelected && (
+              <button
+                onClick={handleToday}
+                className="px-3 py-1 text-sm bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
+              >
+                Today
+              </button>
+            )}
           </div>
           <button
             onClick={handleNextWeek}
