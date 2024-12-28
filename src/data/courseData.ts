@@ -2,84 +2,94 @@ import type { Course, TimeTable } from '../types';
 
 export const courses: Course[] = [
   {
-    code: 'CSE2003',
-    title: 'Computer Architecture and Organization',
-    credit: '4.0',
-    classNo: 'BL2024250400563',
-    slot: 'B14+F11+F12',
-    faculty: 'JAY PRAKASH MAURYA - SCOPE',
-    color: '#DBEAFE',
-    meetLink: 'https://meet.google.com/waa-xgcx-ycc'
-  },
-  {
-    code: 'CSE2004',
-    title: 'Theory Of Computation And Compiler Design',
-    credit: '4.0',
-    classNo: 'BL2024250400585',
-    slot: 'B11+B12+B13',
-    faculty: 'AZRA NAZIR - SCOPE',
-    color: '#DCFCE7',
-    meetLink: 'https://meet.google.com/spw-jkbe-jxr'
-  },
-  {
-    code: 'CSE3004',
-    title: 'Design and Analysis of Algorithms',
-    credit: '4.0',
-    classNo: 'BL2024250400616',
-    slot: 'C14+E11+E12',
-    faculty: 'JASMINE SELVAKUMARI JEYA - SCOPE',
-    color: '#FEE2E2',
-    meetLink: 'https://meet.google.com/hue-tapu-psg'
-  },
-  {
-    code: 'CSE3005',
-    title: 'Software Engineering',
-    credit: '4.0',
-    classNo: 'BL2024250400622',
-    slot: 'A21+A22+A23',
-    faculty: 'A.V.R MAYURI - SCAI',
-    color: '#F3E8FF',
-    meetLink: 'https://meet.google.com/bts-ecrd-oau'
-  },
-  {
-    code: 'ECE3004',
-    title: 'Microprocessors And Microcontrollers',
-    credit: '4.0',
-    classNo: 'BL2024250400228',
-    slot: 'A11+A12+A13',
-    faculty: 'MAYANK GUPTA - SEEE',
-    color: '#FEF3C7',
-    meetLink: 'https://meet.google.com/ktz-txpy-hwt'
-  },
-  {
-    code: 'HUM0001',
-    title: 'Ethics And Values',
+    code: 'CSE0002',
+    title: 'OPEN SOURCE SOFTWARE (LINUX ADMINISTRATION)',
     credit: '2.0',
-    classNo: 'BL2024250400555',
+    classNo: 'BL2024250501067',
     slot: 'E21',
-    faculty: 'RAJENDRA MAHANANDIA - VITBS',
+    faculty: 'KANNAN - SCOPE',
+    color: '#DBEAFE',
+    meetLink: null
+  },
+  {
+    code: 'CSE3003',
+    title: 'Operating System',
+    credit: '4.0',
+    classNo: 'BL2024250500624',
+    slot: 'B11+B12+B13',
+    faculty: 'PUSHPINDER SINGH PATHEJA - SCOPE',
+    color: '#DCFCE7',
+    meetLink: null
+  },
+  {
+    code: 'CSE3006',
+    title: 'Computer Networks',
+    credit: '4.0',
+    classNo: 'BL2024250501079',
+    slot: 'C14+E11+E12',
+    faculty: 'TRAPTI SHARMA - SCAI',
+    color: '#FEE2E2',
+    meetLink: null
+  },
+  {
+    code: 'CSE3009',
+    title: 'Parallel and Distributed Computing',
+    credit: '4.0',
+    classNo: 'BL2024250500685',
+    slot: 'A11+A12+A13',
+    faculty: 'E. NIRMALA - SCOPE',
+    color: '#FEF3C7',
+    meetLink: null
+  },
+  {
+    code: 'CSE3015',
+    title: 'AWS Cloud Practitioner',
+    credit: '4.0',
+    classNo: 'BL2024250500705',
+    slot: 'B14+F11+F12',
+    faculty: 'RAVI VERMA - SCOPE',
+    color: '#F3E8FF',
+    meetLink: null
+  },
+  {
+    code: 'HUM0003',
+    title: 'INDIAN CONSTITUTION',
+    credit: '2.0',
+    classNo: 'BL2024250501104',
+    slot: 'F14',
+    faculty: 'KANNAN - SCOPE',
     color: '#c5e7dc',
-    meetLink: 'https://meet.google.com/frd-ouqx-pzp'
+    meetLink: null
   },
   {
-    code: 'CSE3012',
-    title: 'Mobile Application Development',
+    code: 'MAT2003',
+    title: 'Applied Numerical Method',
     credit: '3.0',
-    classNo: 'BL2024250400682',
-    slot: 'B22+F21',
-    faculty: 'G. GANESAN - SCOPE',
+    classNo: 'BL2024250500302',
+    slot: 'C11+C13',
+    faculty: 'AJAY KUMAR BHURJEE - SASL',
     color: '#FFF7ED',
-    meetLink: 'https://meet.google.com/wme-tcsp-bfi'
+    meetLink: null
   },
   {
-    code: 'DSN2092',
-    title: 'SUMMER INDUSTRIAL INTERNSHIP',
-    credit: '1.0',
-    classNo: 'BL2024250400858',
-    slot: 'NIL',
-    faculty: 'V. SIVASANKARAN - SEEE',
+    code: 'PLA1006',
+    title: 'Lateral Thinking',
+    credit: '2.0',
+    classNo: 'BL2024250500864',
+    slot: 'D11',
+    faculty: 'ETHNUS TARINER 500001 - ACAD',
     color: '#dec9e9',
     meetLink: null
+  },
+  {
+    code: null,
+    title: 'NPTEL Elective - Marketing Analytics',
+    credit: '3.0',
+    classNo: null,
+    slot: null,
+    faculty: 'Swagato Chatterjee (IIT Kharagpur)',
+    color: '#F472B6',
+    meetLink: 'https://onlinecourses.nptel.ac.in/noc25_mg45/preview'
   }
 ];
 
@@ -105,8 +115,8 @@ export const timetable: TimeTable = {
 // Helper function to find course by slot
 export function findCourseBySlot(slot: string): Course | undefined {
   return courses.find(course => {
-    const courseSlots = course.slot.split('+');
-    return courseSlots.includes(slot);
+    const courseSlots = course.slot?.split('+');
+    return courseSlots?.includes(slot);
   });
 }
 

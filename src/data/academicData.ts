@@ -312,7 +312,7 @@ export const academicEvents: AcademicEvent[] = [
     id: 'inter-semester-break',
     title: 'Inter Semester Break',
     startDate: '2025-01-12T00:00:00.000Z',
-    endDate: '2025-01-26T00:00:00.000Z',
+    endDate: '2025-01-19T00:00:00.000Z',
     type: 'holiday',
     description: 'Inter Semester Break',
   },
@@ -338,10 +338,106 @@ export const academicEvents: AcademicEvent[] = [
   {
     id: 'winter',
     title: 'First Instructional Day',
-    startDate: '2025-01-27T00:00:00.000Z',
-    endDate: '2025-01-27T00:00:00.000Z',
+    startDate: '2025-01-20T00:00:00.000Z',
+    endDate: '2025-01-20T00:00:00.000Z',
     type: 'other',
     description: 'Winter Semester Begins',
+  },
+  {
+    id: 'nptel-ma-week1',
+    title: 'NPTEL Week 1',
+    startDate: '2025-01-20T00:00:00.000Z',
+    endDate: '2025-01-24T00:00:00.000Z',
+    type: 'other',
+    description: 'Introduction to R Programing'
+  },
+  {
+    id: 'nptel-ma-week2',
+    title: 'NPTEL Week 2',
+    startDate: '2025-01-27T00:00:00.000Z',
+    endDate: '2025-01-31T00:00:00.000Z',
+    type: 'other',
+    description: 'What customers want?: Customer value, Conjoint Analysis'
+  },
+  {
+    id: 'nptel-ma-week3',
+    title: 'NPTEL Week 3',
+    startDate: '2025-02-03T00:00:00.000Z',
+    endDate: '2025-02-07T00:00:00.000Z',
+    type: 'other',
+    description: 'Analytics for customer segmentation and targeting'
+  },
+  {
+    id: 'nptel-ma-week4',
+    title: 'NPTEL Week 4',
+    startDate: '2025-02-10T00:00:00.000Z',
+    endDate: '2025-02-14T00:00:00.000Z',
+    type: 'other',
+    description: 'Demand Forecasting & Pricing'
+  },
+  {
+    id: 'nptel-ma-week5',
+    title: 'NPTEL Week 5',
+    startDate: '2025-02-17T00:00:00.000Z',
+    endDate: '2025-02-21T00:00:00.000Z',
+    type: 'other',
+    description: 'Pricing'
+  },
+  {
+    id: 'nptel-ma-week6',
+    title: 'NPTEL Week 6',
+    startDate: '2025-02-24T00:00:00.000Z',
+    endDate: '2025-02-28T00:00:00.000Z',
+    type: 'other',
+    description: 'Marketing Mix Models and Advertising Models'
+  },
+  {
+    id: 'nptel-ma-week7',
+    title: 'NPTEL Week 7',
+    startDate: '2025-03-03T00:00:00.000Z',
+    endDate: '2025-03-07T00:00:00.000Z',
+    type: 'other',
+    description: 'Recommender System'
+  },
+  {
+    id: 'nptel-ma-week8',
+    title: 'NPTEL Week 8',
+    startDate: '2025-03-10T00:00:00.000Z',
+    endDate: '2025-03-14T00:00:00.000Z',
+    type: 'other',
+    description: 'Market Basket Analysis and RFM Analysis'
+  },
+  {
+    id: 'nptel-ma-week9',
+    title: 'NPTEL Week 9',
+    startDate: '2025-03-17T00:00:00.000Z',
+    endDate: '2025-03-21T00:00:00.000Z',
+    type: 'other',
+    description: 'Customer Churn & Customer Lifetime Value'
+  },
+  {
+    id: 'nptel-ma-week10',
+    title: 'NPTEL Week 10',
+    startDate: '2025-03-24T00:00:00.000Z',
+    endDate: '2025-03-28T00:00:00.000Z',
+    type: 'other',
+    description: 'Text Mining and Sentiment Analytics'
+  },
+  {
+    id: 'nptel-ma-week11',
+    title: 'NPTEL Week 11',
+    startDate: '2025-03-31T00:00:00.000Z',
+    endDate: '2025-04-04T00:00:00.000Z',
+    type: 'other',
+    description: 'Text Mining and Product Innovation Management'
+  },
+  {
+    id: 'nptel-ma-week12',
+    title: 'NPTEL Week 12',
+    startDate: '2025-04-07T00:00:00.000Z',
+    endDate: '2025-04-11T00:00:00.000Z',
+    type: 'other',
+    description: 'Social Network Analysis for Marketing'
   },
   {
     id: 'winter-add-drop',
@@ -446,6 +542,14 @@ export const academicEvents: AcademicEvent[] = [
     endDate: '2025-04-18T00:00:00.000Z',
     type: 'holiday',
     description: 'Sectional Holiday',
+  },
+  {
+    id: 'nptel-ma-exam',
+    title: 'NPTEL Marketing Analytics Exam',
+    startDate: '2025-05-04T00:00:00.000Z',
+    endDate: '2025-05-04T00:00:00.000Z',
+    type: 'exam',
+    description: 'Final examination for NPTEL Marketing Analytics course'
   },
   {
     id: 'buddha-purnima',

@@ -7,11 +7,11 @@ export interface Student {
 }
 
 export interface Course {
-  code: string;
+  code: string | null;
   title: string;
   credit: string;
-  classNo: string;
-  slot: string;
+  classNo: string | null;
+  slot: string | null;
   faculty: string;
   color: string;
   meetLink: string | null;

@@ -167,82 +167,39 @@ const Schedule: React.FC = () => {
             ))}
           </div>
 
-          {timetable.timeSlots.map((time, timeIndex) => {
-            const dayEvents = days.map(day => {
-              const dayIndex = ['SUN', ...days, 'SAT'].indexOf(day);
-              return getAcademicEvent(weekDates[dayIndex]);
-            });
-
-            return (
-              <div key={time} className="grid grid-cols-[100px_repeat(5,1fr)]">
-                <div className="h-16 p-1 text-xs font-bold flex items-center justify-center text-center bg-white">
-                  {time}
-                </div>
-                {days.map((day, dayIndex) => {
-                  const event = dayEvents[dayIndex];
-                  const isEventDay = shouldCancelClasses(event);
-
-                  if (isEventDay && timeIndex === 0) {
-                    return (
-                      <div
-                        key={`${day}-event`}
-                        className="row-span-full h-full p-4 flex flex-col items-center justify-center text-center"
-                        style={{
-                          backgroundColor: getEventBackgroundColor(event),
-                          gridRow: '1 / span 99'
-                        }}
-                      >
-                        <p 
-                          className="text-base font-bold mb-1"
-                          style={{
-                            color: getEventTextColor(event)
-                          }}
-                        >
-                          {event?.title}
-                        </p>
-                        <p 
-                          className="text-xs"
-                          style={{
-                            color: getEventTextColor(event)
-                          }}
-                        >
-                          No classes due to {event?.type}
-                        </p>
-                      </div>
-                    );
-                  } else if (!isEventDay) {
-                    const slotNumber = timetable.schedule[day][timeIndex];
-                    const course = findCourseBySlot(slotNumber);
-                    
-                    return (
-                      <div
-                        key={`${day}-${timeIndex}`} 
-                        className="h-16 p-2 text-sm overflow-hidden flex items-center justify-center transition-all duration-200 hover:shadow-inner"
-                        style={{
-                          backgroundColor: course?.color || 'white'
-                        }}
-                      >
-                        {slotNumber ? (
-                          <div className="flex items-center space-x-1 font-medium">
-                            <span>{slotNumber}</span>
-                            {course && (
-                              <>
-                                <span className="text-gray-400">-</span>
-                                <span className="text-gray-600">{course.code}</span>
-                              </>
-                            )}
-                          </div>
-                        ) : (
-                          <div className="text-gray-400">{slotNumber}</div>
+          {timetable.timeSlots.map((time, timeIndex) => (
+            <div key={time} className="grid grid-cols-[100px_repeat(5,1fr)]">
+              <div className="h-16 p-1 text-xs font-bold flex items-center justify-center text-center bg-white">
+                {time}
+              </div>
+              {days.map(day => {
+                const slotNumber = timetable.schedule[day][timeIndex];
+                const course = findCourseBySlot(slotNumber);
+                
+                return (
+                  <div
+                    key={`${day}-${timeIndex}`} 
+                    className="h-16 p-2 text-sm overflow-hidden flex items-center justify-center transition-all duration-200 hover:shadow-inner"
+                    style={{
+                      backgroundColor: course?.color || 'white'
+                    }}
+                  >
+                    {slotNumber ? (
+                      <div className="flex items-center space-x-1 font-medium">
+                        <span>{slotNumber}</span>
+                        {course && (
+                          <>
+                            <span className="text-gray-400">-</span>
+                            <span className="text-gray-600">{course.code}</span>
+                          </>
                         )}
                       </div>
-                    );
-                  }
-                  return null;
-                })}
-              </div>
-            );
-          })}
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </div>
