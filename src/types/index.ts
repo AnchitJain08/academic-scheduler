@@ -10,8 +10,9 @@ export interface Course {
   code: string | null;
   title: string;
   credit: string;
-  classNo: string | null;
-  slot: string | null;
+  classNo: string;
+  roomNo: string;
+  slot: string;
   faculty: string;
   color: string;
   meetLink: string | null;

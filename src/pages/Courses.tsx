@@ -48,6 +48,16 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => (
           
           <div className="flex">
             <div className="w-[100px] text-left">
+              <span className="text-sm text-gray-500 font-medium">Room No:</span>
+            </div>
+            <div className="flex-1 text-left">
+              <span className="text-sm">{course.roomNo}</span>
+            </div>
+          </div>
+          
+
+          <div className="flex">
+            <div className="w-[100px] text-left">
               <span className="text-sm text-gray-500 font-medium">Class No:</span>
             </div>
             <div className="flex-1 text-left">

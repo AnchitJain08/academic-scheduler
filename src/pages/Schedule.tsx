@@ -302,7 +302,6 @@ const Schedule: React.FC = () => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="space-y-1.5">
           {isEventDay ? (
             <div 
@@ -371,8 +370,13 @@ const Schedule: React.FC = () => {
                       </div>
                     </div>
                     {course && (
-                      <div className="mt-0.5 text-sm opacity-75 text-left">
-                        {course.title}
+                      <div className="mt-0.5 flex justify-between items-center">
+                        <span className="text-sm opacity-75">{course.title}</span>
+                        {course.roomNo && (
+                          <span className="text-sm font-medium text-gray-600 ml-2">
+                            {course.roomNo}
+                          </span>
+                        )}
                       </div>
                     )}
                   </div>
@@ -384,6 +388,7 @@ const Schedule: React.FC = () => {
       </div>
     );
   };
+
 
   return (
     <div className="p-4 lg:px-36">
