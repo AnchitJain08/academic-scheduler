@@ -2,7 +2,7 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Landing from './pages/Landing';
 import Layout from './components/Layout';
 import Calendar from './pages/Calendar';
-import Profile from './pages/Profile';
+import Curriculum from './pages/Curriculum';
 import Courses from './pages/Courses';
 import Schedule from './pages/Schedule';
 import './App.css';
@@ -20,7 +20,7 @@ function App() {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/Curriculum" element={<Curriculum />} />
         </Route>
 
         {/* Fallback route */}

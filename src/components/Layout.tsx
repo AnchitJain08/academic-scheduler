@@ -50,13 +50,13 @@ const Layout: React.FC = () => {
           </Link>
 
           <Link
-            to="/profile"
+            to="/curriculum"
             className={`flex flex-col items-center justify-center px-2 py-1 text-xs ${
-              isActive('/profile') ? 'text-blue-600' : 'text-gray-600'
+              isActive('/curriculum') ? 'text-blue-600' : 'text-gray-600'
             } hover:text-blue-600 transition-colors`}
           >
             <User className="w-6 h-6" />
-            <span>Profile</span>
+            <span>Curriculum</span>
           </Link>
         </div>
       </nav>
