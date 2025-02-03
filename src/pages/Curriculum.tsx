@@ -22,10 +22,12 @@ const gradePoints: { [key: string]: number } = {
 };
 
 const calculateCGPA = (courses: CompletedCourse[]): number => {
-  const totalCredits = courses.reduce((sum, course) => sum + course.credits, 0);
-  const totalGradePoints = courses.reduce((sum, course) => {
-    if (!course.grade || !gradePoints[course.grade]) return sum;
-    return sum + (course.credits * gradePoints[course.grade]);
+  // Filter courses to only include those with valid grades
+  const gradedCourses = courses.filter(course => course.grade && gradePoints[course.grade]);
+  
+  const totalCredits = gradedCourses.reduce((sum, course) => sum + course.credits, 0);
+  const totalGradePoints = gradedCourses.reduce((sum, course) => {
+    return sum + (course.credits * gradePoints[course.grade!]);
   }, 0);
   
   return totalCredits ? Number((totalGradePoints / totalCredits).toFixed(2)) : 0;
