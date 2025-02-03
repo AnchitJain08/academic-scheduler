@@ -8,12 +8,53 @@ interface CompletedCourse extends CourseDetails {
   courseCode: string;
   courseTitle: string;
   credits: number;
+  grade?: string;
 }
+
+const gradePoints: { [key: string]: number } = {
+  'S': 10,
+  'A': 9,
+  'B': 8,
+  'C': 7,
+  'D': 6,
+  'E': 5,
+  'F': 0
+};
+
+const calculateCGPA = (courses: CompletedCourse[]): number => {
+  const totalCredits = courses.reduce((sum, course) => sum + course.credits, 0);
+  const totalGradePoints = courses.reduce((sum, course) => {
+    if (!course.grade || !gradePoints[course.grade]) return sum;
+    return sum + (course.credits * gradePoints[course.grade]);
+  }, 0);
+  
+  return totalCredits ? Number((totalGradePoints / totalCredits).toFixed(2)) : 0;
+};
 
 const Curriculum: React.FC = () => {
   const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
   const [completedCourses, setCompletedCourses] = useState<CompletedCourse[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Handle scroll event to show/hide scroll button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   // Load completed courses from localStorage on mount
   useEffect(() => {
     const savedCourses = localStorage.getItem('completedCourses');
@@ -83,8 +124,19 @@ const Curriculum: React.FC = () => {
           <div className="flex flex-col gap-4 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
               <h1 className="text-3xl font-bold text-gray-900">Curriculum Structure</h1>
-              <div className="text-lg font-semibold text-gray-700">
-                Completed: {completedCredits} / {totalCredits} Credits
+              <div className="flex items-center gap-4 text-lg font-semibold text-gray-700">
+                <div><span className="font-bold">Completed:</span> {completedCredits} / {totalCredits} <span className="font-bold">Credits</span></div>
+                {completedCourses.some(course => course.grade) && (
+                  <>
+                    <div className="h-6 w-px bg-gray-300"></div>
+                    <div>
+                      <span className="font-bold">CGPA:</span> {calculateCGPA(completedCourses)}
+                      <span className="ml-2 text-gray-500">
+                        ({(calculateCGPA(completedCourses) * 10).toFixed(1)}%)
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             
@@ -117,7 +169,10 @@ const Curriculum: React.FC = () => {
               {curriculumData.map((item) => (
                 <tr key={item.slNo} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.slNo}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{item.category}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900 cursor-pointer hover:text-blue-600 transition-colors" onClick={() => {
+                    setExpandedCategory(item.slNo);
+                    document.getElementById(`category-${item.slNo}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}>{item.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.credits}</td>
                 </tr>
               ))}
@@ -134,6 +189,7 @@ const Curriculum: React.FC = () => {
         <div className="space-y-8">
           {curriculumData.map((category) => (
             <motion.div
+              id={`category-${category.slNo}`}
               key={category.slNo}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -217,27 +273,83 @@ const Curriculum: React.FC = () => {
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Course Title</th>
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Credits</th>
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grade</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {completedCourses.map((course, index) => {
                     const category = curriculumData.find(cat => cat.slNo === course.categoryId);
-                    return (
-                      <tr key={course.courseCode} className="hover:bg-gray-50">
+                   return (
+                      <tr 
+                        key={course.courseCode} 
+                        className="hover:bg-gray-50 cursor-pointer transition-colors"
+                        onClick={() => handleCourseToggle(course, course.categoryId)}
+                      >
                         <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
                         <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{course.courseCode}</td>
                         <td className="px-4 py-3 text-sm text-gray-900">{course.courseTitle}</td>
                         <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{course.credits}</td>
                         <td className="px-4 py-3 text-sm text-gray-500">{category?.category}</td>
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                          <select
+                            className="border-0 bg-transparent focus:ring-2 focus:ring-blue-500 rounded"
+                            value={course.grade || ''}
+                            onClick={(e) => e.stopPropagation()}
+                            onChange={(e) => {
+                              const newGrade = e.target.value;
+                              setCompletedCourses(prev =>
+                                prev.map(c =>
+                                  c.courseCode === course.courseCode
+                                    ? { ...c, grade: newGrade }
+                                    : c
+                                )
+                              );
+                            }}
+                          >
+                            <option value="">Select Grade</option>
+                            {Object.keys(gradePoints).map(grade => (
+                              <option key={grade} value={grade}>{grade}</option>
+                            ))}
+                          </select>
+                        </td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
+              {completedCourses.some(course => course.grade) && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="text-sm font-medium text-gray-900">
+                    CGPA: {calculateCGPA(completedCourses)}
+                    <span className="ml-2 text-gray-500">
+                      ({(calculateCGPA(completedCourses) * 10).toFixed(1)}%)
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
       </div>
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-24 right-6 p-3 bg-white/80 hover:bg-white shadow-lg rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110 group z-50"
+          aria-label="Scroll to top"
+        >
+          <svg
+            className="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
     </motion.div>
   );
 };
