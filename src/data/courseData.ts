@@ -6,87 +6,112 @@ export const courses: Course[] = [
     title: 'OPEN SOURCE SOFTWARE (LINUX ADMINISTRATION)',
     credit: '2.0',
     classNo: 'BL2024250501067',
+    roomNo: 'CR-018',
     slot: 'E21',
     faculty: 'KANNAN - SCOPE',
     color: '#DBEAFE',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 12,
+    maxAbsent: 3
   },
   {
     code: 'CSE3003',
     title: 'Operating System',
     credit: '4.0',
     classNo: 'BL2024250500624',
+    roomNo: 'AR-002',
     slot: 'B11+B12+B13',
     faculty: 'PUSHPINDER SINGH PATHEJA - SCOPE',
     color: '#DCFCE7',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 36,
+    maxAbsent: 9
   },
   {
     code: 'CSE3006',
     title: 'Computer Networks',
     credit: '4.0',
     classNo: 'BL2024250501079',
+    roomNo: 'AB02-221',
     slot: 'C14+E11+E12',
     faculty: 'TRAPTI SHARMA - SCAI',
     color: '#FEE2E2',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 34,
+    maxAbsent: 8
   },
   {
     code: 'CSE3009',
     title: 'Parallel and Distributed Computing',
     credit: '4.0',
     classNo: 'BL2024250500685',
+    roomNo: 'AB02-414',
     slot: 'A11+A12+A13',
     faculty: 'E. NIRMALA - SCOPE',
     color: '#FEF3C7',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 36,
+    maxAbsent: 9
   },
   {
     code: 'CSE3015',
     title: 'AWS Cloud Practitioner',
     credit: '4.0',
     classNo: 'BL2024250500705',
+    roomNo: 'LC-104',
     slot: 'B14+F11+F12',
     faculty: 'RAVI VERMA - SCOPE',
     color: '#F3E8FF',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 34,
+    maxAbsent: 8
   },
   {
     code: 'HUM0003',
     title: 'INDIAN CONSTITUTION',
     credit: '2.0',
     classNo: 'BL2024250501104',
+    roomNo: 'CR-031',
     slot: 'F14',
     faculty: 'KANNAN - SCOPE',
     color: '#c5e7dc',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 11,
+    maxAbsent: 2
   },
   {
     code: 'MAT2003',
     title: 'Applied Numerical Method',
     credit: '3.0',
     classNo: 'BL2024250500302',
+    roomNo: 'AB-417',
     slot: 'C11+C13',
     faculty: 'AJAY KUMAR BHURJEE - SASL',
     color: '#FFF7ED',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 23,
+    maxAbsent: 5
   },
   {
     code: 'PLA1006',
     title: 'Lateral Thinking',
     credit: '2.0',
     classNo: 'BL2024250500864',
+    roomNo: 'AB-313',
     slot: 'D11',
     faculty: 'ETHNUS TARINER 500001 - ACAD',
     color: '#dec9e9',
-    meetLink: null
+    meetLink: null,
+    totalClasses: 12,
+    maxAbsent: 3
   },
   {
     code: null,
     title: 'NPTEL Elective - Marketing Analytics',
     credit: '3.0',
-    classNo: null,
-    slot: null,
+    classNo: 'N/A',
+    roomNo: 'N/A',
+    slot: 'N/A',
     faculty: 'Swagato Chatterjee (IIT Kharagpur)',
     color: '#F472B6',
     meetLink: 'https://onlinecourses.nptel.ac.in/noc25_mg45/preview'

@@ -48,6 +48,16 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => (
           
           <div className="flex">
             <div className="w-[100px] text-left">
+              <span className="text-sm text-gray-500 font-medium">Room No:</span>
+            </div>
+            <div className="flex-1 text-left">
+              <span className="text-sm">{course.roomNo}</span>
+            </div>
+          </div>
+          
+
+          <div className="flex">
+            <div className="w-[100px] text-left">
               <span className="text-sm text-gray-500 font-medium">Class No:</span>
             </div>
             <div className="flex-1 text-left">
@@ -63,6 +73,22 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => (
               <span className="text-sm">{course.faculty}</span>
             </div>
           </div>
+
+          {course.totalClasses && (
+            <div className="flex">
+              <div className="w-[100px] text-left">
+                <span className="text-sm text-gray-500 font-medium">Classes:</span>
+              </div>
+              <div className="flex-1 text-left">
+                <span className="text-sm">{course.totalClasses} total</span>
+                {course.maxAbsent && (
+                  <span className="text-sm text-red-500 ml-1">
+                    (can miss {course.maxAbsent})
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Button Container */}
@@ -116,7 +142,11 @@ const Courses: React.FC = () => {
             {courses.map((course, index) => (
               <div
                 key={course.code}
-                ref={(el) => courseRefs.current[course.code] = el}
+                ref={(el: HTMLDivElement | null) => {
+                  if (course.code) {
+                    courseRefs.current[course.code] = el;
+                  }
+                }}
               >
                 <CourseCard course={course} index={index} />
               </div>
@@ -131,7 +161,11 @@ const Courses: React.FC = () => {
           {courses.map((course, index) => (
             <div
               key={course.code}
-              ref={(el) => courseRefs.current[course.code] = el}
+              ref={(el: HTMLDivElement | null) => {
+                if (course.code) {
+                  courseRefs.current[course.code] = el;
+                }
+              }}
             >
               <CourseCard course={course} index={index} />
             </div>
