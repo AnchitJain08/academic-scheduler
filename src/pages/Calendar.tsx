@@ -16,10 +16,9 @@ import {
 } from 'date-fns';
 import { academicEvents } from '../data/academicData';
 import type { AcademicEvent } from '../types';
-import GradualSpacing from '../components/magicui/gradual-spacing';
 
 const Calendar: React.FC = () => {
-  const [currentDate, setCurrentDate] = useState(new Date(2024, 10)); // November 2024
+  const [currentDate, setCurrentDate] = useState(new Date()); // Initialize with current date
   const monthStart = startOfMonth(currentDate);
   // Always show exactly 6 weeks (42 days) from the start of the calendar
   const calendarStart = startOfWeek(monthStart);

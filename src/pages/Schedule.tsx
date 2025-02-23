@@ -126,6 +126,15 @@ const Schedule: React.FC = () => {
     if (shouldCancelClasses(event)) {
       return Array(timetable.timeSlots.length).fill(`EVENT:${event?.title || 'No Classes'}`);
     }
+
+    // Check for special day orders
+    if (event && event.type === 'other' && event.title.toLowerCase().includes('schedule')) {
+      const dayMatch = event.title.match(/(?:monday|tuesday|wednesday|thursday|friday)/i);
+      if (dayMatch) {
+        const scheduleDay = dayMatch[0].toUpperCase().slice(0, 3);
+        return timetable.schedule[scheduleDay] || [];
+      }
+    }
     
     if (day === 'SUN' || day === 'SAT') {
       return Array(timetable.timeSlots.length).fill('WEEKEND');
