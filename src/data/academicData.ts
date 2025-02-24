@@ -472,12 +472,52 @@ export const academicEvents: AcademicEvent[] = [
     description: 'Last date to calculate the attendance for Mid-Term Examinations',
   },
   {
-    id: 'winter-midterm',
-    title: 'Mid Term Examinations',
-    startDate: '2025-03-03T00:00:00.000Z',
-    endDate: '2025-03-12T00:00:00.000Z',
+    id: 'pdc-winter-midterm',
+    title: 'Parallel and Distributed Computing',
+    startDate: '2025-03-03T09:15:00.000Z',
+    endDate: '2025-03-03T10:45:00.000Z',
     type: 'exam',
-    description: 'Winter Semester Mid Term Examinations',
+    description: 'CSE3009 - PDC Winter Midterm Examination | Faculty: E. NIRMALA - SCOPE | Slot: A11+A12+A13'
+  },
+  {
+    id: 'os-winter-midterm',
+    title: 'Operating System',
+    startDate: '2025-03-05T09:15:00.000Z',
+    endDate: '2025-03-05T10:45:00.000Z',
+    type: 'exam',
+    description: 'CSE3003 - OS Winter Midterm Examination | Faculty: PUSHPINDER SINGH PATHEJA - SCOPE | Slot: B11+B12+B13'
+  },
+  {
+    id: 'aws-winter-midterm',
+    title: 'AWS Cloud Practitioner',
+    startDate: '2025-03-05T14:00:00.000Z',
+    endDate: '2025-03-05T15:30:00.000Z',
+    type: 'exam',
+    description: 'CSE3015 - AWS Winter Midterm Examination | Faculty: RAVI VERMA - SCOPE | Slot: B14+F11+F12'
+  },
+  {
+    id: 'pla-winter-midterm',
+    title: 'Lateral Thinking',
+    startDate: '2025-03-06T09:15:00.000Z',
+    endDate: '2025-03-06T10:45:00.000Z',
+    type: 'exam',
+    description: 'PLA1006 - PLA Winter Midterm Examination | Faculty: ETHNUS TARINER 500001 - ACAD | Slot: D11'
+  },
+  {
+    id: 'anm-winter-midterm',
+    title: 'Applied Numerical Method',
+    startDate: '2025-03-10T09:15:00.000Z',
+    endDate: '2025-03-10T10:45:00.000Z',
+    type: 'exam',
+    description: 'MAT2003 - ANM Winter Midterm Examination | Faculty: AJAY KUMAR BHURJEE - SASL | Slot: C11+C13'
+  },
+  {
+    id: 'cn-winter-midterm',
+    title: 'Computer Networks',
+    startDate: '2025-03-10T14:00:00.000Z',
+    endDate: '2025-03-10T15:30:00.000Z',
+    type: 'exam',
+    description: 'CSE3006 - CN Winter Midterm Examination | Faculty: TRAPTI SHARMA - SCAI | Slot: C14+E11+E12'
   },
   {
     id: 'holi',
