@@ -13,6 +13,7 @@ import {
   addDays,
   addMonths,
   subMonths,
+  compareAsc
 } from 'date-fns';
 import { academicEvents } from '../data/academicData';
 import type { AcademicEvent } from '../types';
@@ -63,9 +64,16 @@ const Calendar: React.FC = () => {
       position: number;
     }>;
 
-    // Sort events by duration (longest first) and assign positions
+    // Sort events by date (ascending) and then by duration
     return dayEvents
-      .sort((a, b) => b.duration - a.duration)
+      .sort((a, b) => {
+        const dateA = parseISO(a.event.startDate);
+        const dateB = parseISO(b.event.startDate);
+        // First sort by date (ascending)
+        const dateComparison = compareAsc(dateA, dateB);
+        // If dates are the same, sort by duration (longest first)
+        return dateComparison !== 0 ? dateComparison : b.duration - a.duration;
+      })
       .map((eventData, index) => ({
         ...eventData,
         position: index
@@ -100,11 +108,17 @@ const Calendar: React.FC = () => {
   const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
   const prevMonth = () => setCurrentDate(subMonths(currentDate, 1));
 
-  // Filter events for the current month
-  const currentMonthEvents = academicEvents.filter(event => {
-    const startDate = parseISO(event.startDate);
-    return isSameMonth(startDate, currentDate);
-  });
+  // Filter events for the current month and sort by start date (ascending)
+  const currentMonthEvents = academicEvents
+    .filter(event => {
+      const startDate = parseISO(event.startDate);
+      return isSameMonth(startDate, currentDate);
+    })
+    .sort((a, b) => {
+      const dateA = parseISO(a.startDate);
+      const dateB = parseISO(b.startDate);
+      return compareAsc(dateA, dateB);
+    });
 
   // Mobile view component
   const MobileView = () => (
@@ -142,7 +156,7 @@ const Calendar: React.FC = () => {
         </button>
       </div>
 
-      {/* Events list */}
+      {/* Events list - already sorted by the currentMonthEvents sort above */}
       <div className="space-y-2">
         {currentMonthEvents.map((event, index) => {
           const isPastEvent = event.endDate 
