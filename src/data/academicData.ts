@@ -600,17 +600,65 @@ export const academicEvents: AcademicEvent[] = [
     description: 'Last instructional day of Winter Semester',
   },
   {
-    id: 'winter-finals-2022',
-    title: 'Term End Examinations (2022 Batch)',
-    startDate: '2025-04-24T00:00:00.000Z',
-    endDate: '2025-05-10T00:00:00.000Z',
+    id: 'pdc-winter-termend',
+    title: 'Parallel and Distributed Computing',
+    startDate: '2025-04-30T00:00:00.000Z',
+    endDate: '2025-04-30T00:00:00.000Z',
     type: 'exam',
-    description: 'Term End Examinations for 2022 Batch B.Tech.',
+    description: 'CSE3009 - PDC Winter TermEnd Examination | Faculty: E. NIRMALA - SCOPE | Slot: A11+A12+A13'
+  },
+  {
+    id: 'os-winter-termend',
+    title: 'Operating System',
+    startDate: '2025-04-28T00:00:00.000Z',
+    endDate: '2025-04-28T00:00:00.000Z',
+    type: 'exam',
+    description: 'CSE3003 - OS Winter TermEnd Examination | Faculty: PUSHPINDER SINGH PATHEJA - SCOPE | Slot: B11+B12+B13'
+  },
+  {
+    id: 'aws-winter-termend',
+    title: 'AWS Cloud Practitioner',
+    startDate: '2025-05-01T00:00:00.000Z',
+    endDate: '2025-05-01T00:00:00.000Z',
+    type: 'exam',
+    description: 'CSE3015 - AWS Winter TermEnd Examination | Faculty: RAVI VERMA - SCOPE | Slot: B14+F11+F12'
+  },
+  {
+    id: 'pla-winter-termend',
+    title: 'Lateral Thinking',
+    startDate: '2025-04-25T00:00:00.000Z',
+    endDate: '2025-04-25TT00:00:00.000Z',
+    type: 'exam',
+    description: 'PLA1006 - PLA Winter TermEnd Examination | Faculty: ETHNUS TARINER 500001 - ACAD | Slot: D11'
+  },
+  {
+    id: 'anm-winter-termend',
+    title: 'Applied Numerical Method',
+    startDate: '2025-04-29T00:00:00.000Z',
+    endDate: '2025-04-29T00:00:00.000Z',
+    type: 'exam',
+    description: 'MAT2003 - ANM Winter TermEnd Examination | Faculty: AJAY KUMAR BHURJEE - SASL | Slot: C11+C13'
+  },
+  {
+    id: 'cn-winter-termend',
+    title: 'Computer Networks',
+    startDate: '2025-04-26T00:00:00.000Z',
+    endDate: '2025-04-26T00:00:00.000Z',
+    type: 'exam',
+    description: 'CSE3006 - CN Winter TermEnd Examination | Faculty: TRAPTI SHARMA - SCAI | Slot: C14+E11+E12'
+  },
+  {
+    id: 'nptel-winter-termend',
+    title: 'NPTEL Elective - Marketing Analytics',
+    startDate: '2025-05-04T00:00:00.000Z',
+    endDate: '2025-05-04T00:00:00.000Z',
+    type: 'exam',
+    description: 'NPTEL Elective - Marketing Analytics | Faculty: Swagato Chatterjee (IIT Kharagpur)'
   },
   {
     id: 'summer-break-2022',
     title: 'Summer Break (2022 Batch)',
-    startDate: '2025-05-11T00:00:00.000Z',
+    startDate: '2025-05-05T00:00:00.000Z',
     endDate: '2025-06-15T00:00:00.000Z',
     type: 'holiday',
     description: 'Summer Break for 2022 Batch B.Tech.',
