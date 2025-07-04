@@ -659,7 +659,7 @@ export const academicEvents: AcademicEvent[] = [
     id: 'summer-break-2022',
     title: 'Summer Break (2022 Batch)',
     startDate: '2025-05-05T05:30:00.000+05:30',
-    endDate: '2025-06-15T05:30:00.000+05:30',
+    endDate: '2025-07-02T05:30:00.000+05:30',
     type: 'holiday',
     description: 'Summer Break for 2022 Batch B.Tech.',
   },
@@ -725,6 +725,112 @@ export const academicEvents: AcademicEvent[] = [
     title: 'Wednesday Schedule',
     startDate: '2025-04-19T05:30:00.000+05:30',
     endDate: '2025-04-19T05:30:00.000+05:30',
+    type: 'other',
+    description: 'Following Wednesday Schedule',
+  },
+  {
+    id: 'first-instructional-day',
+    title: 'First Instructional Day',
+    startDate: '2025-07-03T09:00:00.000+05:30',
+    endDate: '2025-07-03T17:00:00.000+05:30',
+    type: 'other',
+    description: 'First Instructional Day - Beginning of academic term'
+  },
+  {
+    id: 'muharram-holiday',
+    title: 'Muharram',
+    startDate: '2025-07-06T05:30:00.000+05:30',
+    endDate: '2025-07-06T23:59:00.000+05:30',
+    type: 'holiday',
+    description: 'Muharram - Sectional Holiday'
+  },
+  {
+    id: 'add-drop-deadline',
+    title: 'Last day for Add / Drop the courses',
+    startDate: '2025-07-09T09:00:00.000+05:30',
+    endDate: '2025-07-09T17:00:00.000+05:30',
+    type: 'deadline',
+    description: 'Last day for Add / Drop the courses - Course registration deadline'
+  },
+  {
+    id: 'midterm-attendance-deadline',
+    title: 'Mid-Term Attendance Calculation',
+    startDate: '2025-07-19T09:00:00.000+05:30',
+    endDate: '2025-07-19T17:00:00.000+05:30',
+    type: 'deadline',
+    description: 'Last date to calculate the attendance for Mid-Term Examinations'
+  },
+  {
+    id: 'midterm-examinations',
+    title: 'Mid-Term Examinations',
+    startDate: '2025-07-21T09:00:00.000+05:30',
+    endDate: '2025-07-23T17:00:00.000+05:30',
+    type: 'exam',
+    description: 'Mid-Term Examinations - 3 days examination period'
+  },
+  {
+    id: 'raksha-bandhan',
+    title: 'Raksha Bandhan',
+    startDate: '2025-08-09T05:30:00.000+05:30',
+    endDate: '2025-08-09T23:59:00.000+05:30',
+    type: 'holiday',
+    description: 'Raksha Bandhan - Festival holiday'
+  },
+  {
+    id: 'last-instructional-day',
+    title: 'Last Instructional Day',
+    startDate: '2025-08-13T09:00:00.000+05:30',
+    endDate: '2025-08-13T17:00:00.000+05:30',
+    type: 'other',
+    description: 'Last Instructional Day - End of academic term'
+  },
+  {
+    id: 'independence-day',
+    title: 'Independence Day',
+    startDate: '2025-08-15T05:30:00.000+05:30',
+    endDate: '2025-08-15T23:59:00.000+05:30',
+    type: 'holiday',
+    description: 'Independence Day - National holiday'
+  },
+  {
+    id: 'janmashtami',
+    title: 'Janmashtami',
+    startDate: '2025-08-16T05:30:00.000+05:30',
+    endDate: '2025-08-16T23:59:00.000+05:30',
+    type: 'holiday',
+    description: 'Janmashtami - Festival holiday'
+  },
+  {
+    id: 'term-end-examinations',
+    title: 'Term End Examinations',
+    startDate: '2025-08-18T09:00:00.000+05:30',
+    endDate: '2025-08-22T17:00:00.000+05:30',
+    type: 'exam',
+    description: 'Term End Examinations - 5 days examination period'
+  },
+  
+  // Special Day Orders
+  {
+    id: 'day-order-1',
+    title: 'Monday Schedule',
+    startDate: '2025-07-05T05:30:00.000+05:30',
+    endDate: '2025-07-05T05:30:00.000+05:30',
+    type: 'other',
+    description: 'Following Monday Schedule',
+  },
+  {
+    id: 'day-order-2',
+    title: 'Tuesday Schedule',
+    startDate: '2025-07-19T05:30:00.000+05:30',
+    endDate: '2025-07-19T05:30:00.000+05:30',
+    type: 'other',
+    description: 'Following Tuesday Schedule',
+  },
+  {
+    id: 'day-order-3',
+    title: 'Wednesday Schedule',
+    startDate: '2025-08-02T05:30:00.000+05:30',
+    endDate: '2025-08-02T05:30:00.000+05:30',
     type: 'other',
     description: 'Following Wednesday Schedule',
   }
